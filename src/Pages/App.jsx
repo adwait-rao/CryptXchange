@@ -1,4 +1,5 @@
 import { NavBar, HeroSection } from "../Components";
+import Tokens from "../Pages/Tokens";
 import { ChatGpt } from "../Components";
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
@@ -32,22 +33,42 @@ function App() {
 
   if (signer !== undefined) getWalletAddress();
   return (
-    <div>
-      {ChatwithGpt && (
+    <>
+      {!ChatwithGpt && (
         <>
-          {/* <NavBar
+          <NavBar
+            provider={provider}
+            isConnected={isConnected}
+            signerAddress={signerAddress}
+            getSigner={getSigner}
+          />
+          {/* <HeroSection
+            provider={provider}
+            isConnected={isConnected}
+            signerAddress={signerAddress}
+            signer={signer}
+            getSigner={getSigner}
+          /> */}
+        </>
+      )}
+
+      <Tokens />
+
+      {/* {ChatwithGpt && (
+        <>
+          <NavBar
             renderGPT={setChatWithGpt}
             provider={provider}
             isConnected={isConnected}
             signerAddress={signerAddress}
             getSigner={getSigner}
           />
-          <ChatGpt /> */}
-          <AllTokens></AllTokens>
+          <ChatGpt />
         </>
-      )}
-      {!ChatwithGpt && (
-        <>
+      )} */}
+
+      {/* { ChatwithGpt && (
+        <div>
           <NavBar
             renderGPT={setChatWithGpt}
             provider={provider}
@@ -62,9 +83,10 @@ function App() {
             signer={signer}
             getSigner={getSigner}
           />
-        </>
-      )}
-    </div>
+          <div />
+          )
+        } */}
+    </>
   );
 }
 

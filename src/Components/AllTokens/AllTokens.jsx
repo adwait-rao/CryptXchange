@@ -48,36 +48,40 @@ function AllTokens({ allTokenList }) {
     //     ))}
     //   </div>
     // </div>
-
-    <table className="table-auto mt-5 bg-[#15162e] text-white shadow-lg ring-1 ring-[#D01257] rounded-xl border-[#D01257]">
-      <thead className="mb-4 border-b border-b-[#D01257]">
-        <tr className="mx-6">
-          <th className="px-6 py-4 items-center">#</th>
-          <th className="px-6 py-4 items-center">Token Name</th>
-          <th className="px-8  py-4 items-center">Price</th>
-          <th className="px-6 py-4 items-center">Change</th>
-          <th className="px-6 py-4 items-center">TVL</th>
-          <th className="px-6 py-4 items-center">Volume</th>
-        </tr>
-      </thead>
-      <tbody>
-        {allTokenList.map((el, i) => (
-          <tr>
-            <td className="px-12 py-4">{el.number}</td>
-            <td className="px-6 py-2 items-center">
-              <p className="flex items-center">
-                <img src={el.image} className="w-4 h-4 mx-2" />
-                <p>{el.name}</p> <p className="ml-1">{el.symbol}</p>
-              </p>
-            </td>
-            <td className="px-6 py-2 align">{el.change}</td>
-            <td className="px-6 py-2 align">{el.price}</td>
-            <td className="px-6 py-2 align">{el.tvl}</td>
-            <td className="px-6 py-2 align">{el.volume}</td>
+    <div className="overflow-auto ring-1 rounded-xl ring-[#D01257] bg-[#15162e]">
+      <table className="table-auto mt-5 bg-[#15162e] text-white shadow-lg border-[#D01257]">
+        <thead className="mb-4 border-b border-b-[#D01257]">
+          <tr className="mx-6">
+            <th className="px-6 py-4 items-center">#</th>
+            <th className="px-6 py-4 items-center">Token Name</th>
+            <th className="px-6 py-4 items-center">Change24H</th>
+            <th className="px-8 py-4 items-center">Price</th>
+            <th className="px-6 py-4 items-center">Supply</th>
+            <th className="px-6 py-4 items-center w-[4.5rem]">Volume</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {allTokenList.map((el, i) => (
+            <tr>
+              <td className="px-12 py-4">{i + 1}</td>
+              <td className="px-6 py-2 items-center">
+                <p className="flex items-center">
+                  {/* <img src={el.image} className="w-4 h-4 mx-2" /> */}
+                  <p>{el.name}</p>{" "}
+                  <p className="text-[12px] font-bold ml-2 p-[3px] rounded-lg bg-[#D01257]">
+                    {el.symbol}
+                  </p>
+                </p>
+              </td>
+              <td className="px-6 py-2 align">{el.changePercent24Hr}</td>
+              <td className="px-6 py-2 align">{el.priceUsd}</td>
+              <td className="px-6 py-2 align">{el.supply}</td>
+              <td className="px-6 py-2 align w-[4.5rem]">{el.volumeUsd24Hr}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
